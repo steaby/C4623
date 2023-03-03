@@ -14,16 +14,16 @@ class Creature
 		// creating a method
 		public void sound()
 		{
-			System.out.println("Meow...");
+			System.out.println("meow meow...");
 		}
 	}
 	//creating a child class for the cat class which is a parent class 
-	class Kitten extends Cat
+	class Dogs extends Creature
 	{
 		//creating a method
-		public void body()
+		public void sound()
 		{
-			System.out.println("kittens have belly buttons");
+			System.out.println("Barks...");
 		}
 	}
 	class Inherittester
@@ -31,10 +31,12 @@ class Creature
 		public static void main (String[] args)
 		{
 			//creating a object
-			Kitten c = new Kitten();
+			Cat c = new Cat();
 			c.display();
 			c.sound();
-			c.body();
+			Dogs b = new Dogs();
+			b.display();
+			b.sound();	
 			
 		}
 	}
