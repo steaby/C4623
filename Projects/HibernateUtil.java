@@ -1,5 +1,4 @@
-package com.student.util;
-
+package com.onetoone.util;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
@@ -7,14 +6,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
-import com.student.model.*;
+import com.onetoone.entity.*;
 
 public class HibernateUtil
 {
 	 private static SessionFactory sessionFactory;
-	    public static SessionFactory getSessionFactory() 
-	    {
+	    public static SessionFactory getSessionFactory() {
 	        if (sessionFactory == null) 
 	        {
 	            try 
@@ -22,7 +19,7 @@ public class HibernateUtil
 	                Configuration configuration = new Configuration();
 	                Properties settings = new Properties();
 	                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-	                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/studentmgmt?useSSL=false");
+	                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/onetoone?useSSL=false");
 	                settings.put(Environment.USER, "root");
 	                settings.put(Environment.PASS, "stella");
 	                settings.put(Environment.SHOW_SQL, "true");
@@ -30,13 +27,16 @@ public class HibernateUtil
 	                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 	                
 	                //create,create-drop,update
-	                settings.put(Environment.HBM2DDL_AUTO, "create");
+	                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 	                configuration.setProperties(settings);	                
-	                configuration.addAnnotatedClass(students.class);
+	                configuration.addAnnotatedClass(Instructor.class);
+	                configuration.addAnnotatedClass(InstructorDetail.class);
+	                //configuration.addAnnotatedClass(Course.class);
 	                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 	                        .applySettings(configuration.getProperties()).build();
 	                
 	                sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+	          
 	            } 
 	            catch (Exception e) 
 	            {
@@ -46,5 +46,3 @@ public class HibernateUtil
 	        return sessionFactory;
 	    }
 	}
-
-

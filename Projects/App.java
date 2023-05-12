@@ -1,38 +1,50 @@
-package com.student.main;
+package com.onetoone;
+import com.onetoone.entity.*;
 
-import com.student.Dao.StudentsDao;
-import com.student.model.Students;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.onetoone.dao.*;
 public class App 
 {
-	public static void main(String[] args) 
-	{
-		@SuppressWarnings("unused")
-		StudentsDao stD = new StudentsDao();
-		Students st = new Students();
-		Students st1 = new Students();
-		Students st2 = new Students();
-		st.setFirstname("anu");
-		st.setLastname("Sharma");
-		st.setEmail("anu@gmail.com");
-		st.setBatch("IT");
-		st1.setFirstname("manu");
-		st1.setLastname("moo");
-		st1.setEmail("manu@gmail.com");
-		st1.setBatch("BMS");
-		st2.setFirstname("gj");
-		st2.setLastname("hjs");
-		st2.setEmail("sgjh");
-		st2.setBatch("do");
-		
-		StudentsDao.saveStudent(st);
-		StudentsDao.saveStudent(st1);
-		StudentsDao.saveStudent(st2);
-		
-		st1.setLastname("Mehta");
-		StudentsDao.saveOrUpdateStudent(st1);
-		
-		StudentsDao.deleteStudent(st2);		
-	}
+    public static void main( String[] args )
+    {
+    	 Instructor instructor = new Instructor();
+    	 instructor.setFirstName("shona");
+    	 instructor.setLastName("P");
+    	 instructor.setEmail("shona@gmail.com");
+    	 
+    	 InstructorDao instructorDao = new InstructorDao();
+    	 
+    	 InstructorDetail instructorDetail = new InstructorDetail();
+    	 instructorDetail.setYoutubeChannel("all mine");
+    	 instructorDetail.setHobby("drawing");
+    	 InstructorDetailDao idao = new InstructorDetailDao();
+    	 
+    	 List<Instructor> instructor1 = new ArrayList<>();
+    	 instructor1.add(instructor);
+    	 
+    	 List<InstructorDetail> instructordetail = new ArrayList<>();
+    	 instructordetail.add(instructorDetail);
+    	 
+    	 //instructorDetail.setInstructor(instructor);
+    	 instructorDao.saveInstructor(instructor);
+    	 idao.saveInstructorDetail(instructorDetail);
+    	 
+    	 
+    	 
+//    	 List<Course> courses = new ArrayList<>();
+//    	 Course tempCourse1 = new Course();
+//    	 tempCourse1.setTitle("aaaaa.....");
+//    	 tempCourse1.setInstructor(instructor);
+//    	 courses.add(tempCourse1);
+//    	 
+//    	 CourseDao coursedao = new CourseDao();
+//    	 coursedao.saveCourse(tempCourse1);
+         
+         
 
+         
+         
+    }
 }

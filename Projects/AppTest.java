@@ -1,4 +1,4 @@
-package com.maven.HotelManagementSystem;
+package com.onetoone;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
