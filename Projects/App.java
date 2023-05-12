@@ -1,32 +1,38 @@
 package com.student.main;
 
-import com.student.dao.studentsDao;
-import com.student.model.students;
+import com.student.Dao.StudentsDao;
+import com.student.model.Students;
 
-public class App
+public class App 
 {
-
 	public static void main(String[] args) 
 	{
-		studentsDao stD = new studentsDao();
-
-        // test saveStudent
-        students st =new students("Stella","N","stella@gmail.com");
-        students st1 =new students("Ajay","Z","ajay@gmail.com");
-        students st2 =new students("Anu","P","anu@gmail.com");
-        
-        //passing value in parameterized constructor
-        stD.saveStudent(st);
-        stD.saveStudent(st1);
-        stD.saveStudent(st2);
-        
-        // test updateStudent
-        st.setFirstName("Stella");
-        stD.updateStudent(st);
-        
-        stD.deleteStudent(st1);
-
-
+		@SuppressWarnings("unused")
+		StudentsDao stD = new StudentsDao();
+		Students st = new Students();
+		Students st1 = new Students();
+		Students st2 = new Students();
+		st.setFirstname("anu");
+		st.setLastname("Sharma");
+		st.setEmail("anu@gmail.com");
+		st.setBatch("IT");
+		st1.setFirstname("manu");
+		st1.setLastname("moo");
+		st1.setEmail("manu@gmail.com");
+		st1.setBatch("BMS");
+		st2.setFirstname("gj");
+		st2.setLastname("hjs");
+		st2.setEmail("sgjh");
+		st2.setBatch("do");
+		
+		StudentsDao.saveStudent(st);
+		StudentsDao.saveStudent(st1);
+		StudentsDao.saveStudent(st2);
+		
+		st1.setLastname("Mehta");
+		StudentsDao.saveOrUpdateStudent(st1);
+		
+		StudentsDao.deleteStudent(st2);		
 	}
 
 }
