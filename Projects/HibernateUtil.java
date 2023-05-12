@@ -1,4 +1,4 @@
-package com.Hotel.util;
+package com.student.util;
 
 import java.util.Properties;
 
@@ -7,7 +7,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-import com.Hotel.model.*;
+
+import com.student.model.*;
 
 public class HibernateUtil
 {
@@ -21,17 +22,17 @@ public class HibernateUtil
 	                Configuration configuration = new Configuration();
 	                Properties settings = new Properties();
 	                settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-	                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/HotelManagement?useSSL=false");
+	                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/studentmgmt?useSSL=false");
 	                settings.put(Environment.USER, "root");
 	                settings.put(Environment.PASS, "stella");
 	                settings.put(Environment.SHOW_SQL, "true");
 	                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");             
 	                settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 	                
-	                
-	                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+	                //create,create-drop,update
+	                settings.put(Environment.HBM2DDL_AUTO, "create");
 	                configuration.setProperties(settings);	                
-	                configuration.addAnnotatedClass(Booking.class);
+	                configuration.addAnnotatedClass(students.class);
 	                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 	                        .applySettings(configuration.getProperties()).build();
 	                
@@ -45,3 +46,5 @@ public class HibernateUtil
 	        return sessionFactory;
 	    }
 	}
+
+
